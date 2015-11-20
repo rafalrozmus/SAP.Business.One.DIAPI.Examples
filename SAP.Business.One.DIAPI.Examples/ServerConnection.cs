@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Configuration;
+using System.Configuration; // Remember to add reference to System.Configuration first
 
 namespace SAP.Business.One.DIAPI.Examples
 {
@@ -19,13 +19,16 @@ namespace SAP.Business.One.DIAPI.Examples
         /// a new connection to SAP Business One server.
         /// </summary>
         /// <returns>Connection result as integer. Returns 0 if connection was successful</returns>
-        public int connect()
+        public int Connect()
         {
-            // All the server settings and user credentials used below are stored in App.config file.
-            // ConfigurationManager is being used to read the App.config file. 
-            // You can store you own settings in App.config or use actual values directly in the code:
-            // company.Server = "sapb1server";
-            // Example.App.config is included in this project, rename it to App.config and populate it with your own values.
+            /*
+            All the server settings and user credentials used below are stored in App.config file.
+            ConfigurationManager is being used to read the App.config file. 
+            You can store you own settings in App.config or use actual values directly in the code:
+            company.Server = "sapb1server";
+            Example.App.config is included in this project, rename it to App.config and populate it with your own values.
+            */
+
             company.Server = ConfigurationManager.AppSettings["server"].ToString();
             company.CompanyDB = ConfigurationManager.AppSettings["companydb"].ToString();
             company.DbServerType = SAPbobsCOM.BoDataServerTypes.dst_MSSQL2012;
@@ -50,7 +53,7 @@ namespace SAP.Business.One.DIAPI.Examples
         /// Returns SAP Business One Company Object
         /// </summary>
         /// <returns>SAPbobsCOM.Company object</returns>
-        public SAPbobsCOM.Company getCompany()
+        public SAPbobsCOM.Company GetCompany()
         {
             return this.company;
         }
@@ -59,7 +62,7 @@ namespace SAP.Business.One.DIAPI.Examples
         /// Returns last error code
         /// </summary>
         /// <returns>Last error code as integer</returns>
-        public int getErrorCode()
+        public int GetErrorCode()
         {
             return this.errorCode;
         }
@@ -68,7 +71,7 @@ namespace SAP.Business.One.DIAPI.Examples
         /// Returns last error message
         /// </summary>
         /// <returns>Last error message as String</returns>
-        public String getErrorMessage()
+        public String GetErrorMessage()
         {
             return this.errorMessage;
         }

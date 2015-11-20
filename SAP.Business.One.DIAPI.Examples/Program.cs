@@ -10,6 +10,17 @@ namespace SAP.Business.One.DIAPI.Examples
     {
         static void Main(string[] args)
         {
+            ServerConnection connection = new ServerConnection();
+            // attempt connection; 0 = success
+            if (connection.Connect() == 0)
+            {
+                Console.WriteLine("Successfully connected to " + connection.GetCompany().CompanyName + "!");
+                connection.GetCompany().Disconnect();
+            }
+            else
+            {
+                Console.WriteLine("Error " + connection.GetErrorCode() + ": " + connection.GetErrorMessage());
+            }
         }
     }
 }
