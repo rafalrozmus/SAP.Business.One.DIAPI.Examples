@@ -21,6 +21,11 @@ namespace SAP.Business.One.DIAPI.Examples
         /// <returns>Connection result as integer. Returns 0 if connection was successful</returns>
         public int connect()
         {
+            // All the server settings and user credentials used below are stored in App.config file.
+            // ConfigurationManager is being used to read the App.config file. 
+            // You can store you own settings in App.config or use actual values directly in the code:
+            // company.Server = "sapb1server";
+            // Example.App.config is included in this project, rename it to App.config and populate it with your own values.
             company.Server = ConfigurationManager.AppSettings["server"].ToString();
             company.CompanyDB = ConfigurationManager.AppSettings["companydb"].ToString();
             company.DbServerType = SAPbobsCOM.BoDataServerTypes.dst_MSSQL2012;
